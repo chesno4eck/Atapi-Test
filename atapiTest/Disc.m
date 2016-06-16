@@ -17,10 +17,20 @@
     self.name = name;
     self.price = price;
     self.code = code;
-    self.discType = discType;
-    self.discContentType = discContentType;
+    if (discType == DiscTypeDVD) {
+        self.discType = @"DVD";
+    } else  if (discType == DiscTypeCD) {
+        self.discType = @"CD";
+    }
     
-    NSLog(@"succes init %@", self.code);
+    
+    if (discContentType == DiscContentTypeSoft) {
+        self.discContentType = @"Software";
+    } else  if (discType == DiscContentTypeMusic) {
+        self.discContentType = @"Music";
+    } else  if (discType == DiscContentTypeVideo) {
+        self.discContentType = @"Video";
+    }
     
     return self;
 }

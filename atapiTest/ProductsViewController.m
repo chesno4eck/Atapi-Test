@@ -8,7 +8,12 @@
 
 #import "ProductsViewController.h"
 #import "Product.h"
-@interface ProductsViewController ()
+#import "InfoViewController.h"
+
+@interface ProductsViewController () {
+    NSArray * arrayOfDiscs;
+    NSArray * arrayOfBooks;
+}
 
 @end
 
@@ -17,12 +22,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    Disc * disc0 = [[Disc alloc ] initWithName:@"gta" price:@132 code:@"code152" discType: DiscTypeDVD andDiscContentType:DiscContentTypeSoft];
-    Disc * disc1 = [[Disc alloc ] initWithName:@"titanic" price:@99 code:@"code145" discType: DiscTypeDVD andDiscContentType:DiscContentTypeVideo];
-    Disc * disc2 = [[Disc alloc ] initWithName:@"Eminem" price:@59 code:@"code472" discType: DiscTypeCD andDiscContentType:DiscContentTypeMusic];
+    Disc * disc0 = [[Disc alloc] initWithName:@"GTA" price:@132 code:@"code152" discType: DiscTypeDVD andDiscContentType:DiscContentTypeSoft];
+    Disc * disc1 = [[Disc alloc] initWithName:@"Titanic" price:@99 code:@"code145" discType: DiscTypeDVD andDiscContentType:DiscContentTypeVideo];
+    Disc * disc2 = [[Disc alloc] initWithName:@"Eminem" price:@59 code:@"code472" discType: DiscTypeCD andDiscContentType:DiscContentTypeMusic];
+    Book * book0 = [[Book alloc] initProgrammingBookWithName:@"Patterns" price:@400 code:@"code7" nummberOfPages:@500 andLang:@"ObjC"];
+    Book * book1 = [[Book alloc] initProgrammingBookWithName:@"SwiftBook" price:@300 code:@"code17" nummberOfPages:@400 andLang:@"Swift"];
+    Book * book2 = [[Book alloc] initCookBookWithName:@"Recipes" price:@99 code:@"code91" nummberOfPages:@41 andIngredient:@"Meat"];
 
-    
-    
+    arrayOfDiscs = [[NSArray alloc]initWithObjects: disc0, disc1, disc2, nil];
+    arrayOfBooks = [[NSArray alloc]initWithObjects: book0, book1, book2, nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,26 +40,45 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
-//    return 0;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    if (section == 0) {
+        return arrayOfDiscs.count;
+    } else {
+        return arrayOfBooks.count;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (indexPath.section == 0) {
+        cell.textLabel.text = ((Disc *)arrayOfDiscs[indexPath.row]).name;
+        cell.detailTextLabel.text = ((Disc *)arrayOfDiscs[indexPath.row]).discContentType;
+    } else if (indexPath.section == 1) {
+        cell.textLabel.text = ((Book *)arrayOfBooks[indexPath.row]).name;
+        cell.detailTextLabel.text = ((Book *)arrayOfBooks[indexPath.row]).bookCategory;
+    }
     
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    InfoViewController *infoViewController = [storyboard instantiateViewControllerWithIdentifier:@"info"];
 
+    if (indexPath.section == 0) {
+        infoViewController.disc = arrayOfDiscs[indexPath.row];
+    } else  if (indexPath.section == 1) {
+        infoViewController.book = arrayOfBooks[indexPath.row];
+    }
+    [self.navigationController pushViewController:infoViewController animated:YES];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -86,14 +113,13 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([[segue destinationViewController].restorationIdentifier  isEqual: @"info"]){
+//        ((InfoViewController *)[segue destinationViewController]).nameString = @"asd";
+//    }
+//}
 
 @end

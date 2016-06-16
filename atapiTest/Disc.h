@@ -23,8 +23,8 @@ typedef enum DiscContentType {
     DiscContentTypeSoft
 } DiscContentType;
 
-@property (nonatomic) DiscType discType;
-@property (nonatomic) DiscContentType discContentType;
+@property (nonatomic) NSString * discType;
+@property (nonatomic) NSString * discContentType;
 
 - (instancetype)initWithName :(NSString *)name price :(NSNumber *)price code :(NSString *)code discType :(DiscType) discType andDiscContentType :(DiscContentType) discContentType;
 

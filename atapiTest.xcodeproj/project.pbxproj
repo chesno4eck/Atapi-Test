@@ -16,6 +16,7 @@
 		C345F0041D111D96008A9438 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = C345F0031D111D96008A9438 /* Product.m */; };
 		C345F00A1D112020008A9438 /* Disc.m in Sources */ = {isa = PBXBuildFile; fileRef = C345F0091D112020008A9438 /* Disc.m */; };
 		C345F00D1D1159BF008A9438 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C345F00C1D1159BF008A9438 /* Book.m */; };
+		C345F0151D127ECD008A9438 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C345F0141D127ECD008A9438 /* InfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		C345F0091D112020008A9438 /* Disc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Disc.m; sourceTree = "<group>"; };
 		C345F00B1D1159BF008A9438 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		C345F00C1D1159BF008A9438 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		C345F0131D127ECD008A9438 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		C345F0141D127ECD008A9438 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 			children = (
 				C345EFFE1D111C52008A9438 /* ProductsViewController.h */,
 				C345EFFF1D111C52008A9438 /* ProductsViewController.m */,
+				C345F0131D127ECD008A9438 /* InfoViewController.h */,
+				C345F0141D127ECD008A9438 /* InfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				C345F0041D111D96008A9438 /* Product.m in Sources */,
 				C345F0001D111C52008A9438 /* ProductsViewController.m in Sources */,
 				C345F00D1D1159BF008A9438 /* Book.m in Sources */,
+				C345F0151D127ECD008A9438 /* InfoViewController.m in Sources */,
 				C345EFE91D111BF6008A9438 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
